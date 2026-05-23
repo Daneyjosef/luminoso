@@ -12,8 +12,8 @@ const EASING = {
 };
 
 const VIDEOS = [
-  '/freepik_video-of-downtown-toronto_2879662121 (1).mp4',
-  '/freepik_video-of-toronto_2879724800.mp4',
+  '/Abuja skyline.mp4',
+  '/Lagos skyline.mp4',
 ];
 
 const INTERVAL_MS = 8000;
