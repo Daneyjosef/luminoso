@@ -70,8 +70,8 @@ export default function ContactSection() {
     {
       icon: FiPhone,
       label: 'Phone',
-      value: '+1 (555) 123-4567',
-      href: 'tel:+15551234567',
+      value: '+234 818 052 7219',
+      href: 'tel:+2348180527219',
     },
     {
       icon: FiMapPin,
