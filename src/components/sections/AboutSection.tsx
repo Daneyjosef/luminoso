@@ -22,6 +22,26 @@ export default function AboutSection() {
     ease: EASING.smoothOut,
   });
 
+  const whyChooseRef = useScrollAnimation({
+    start: 'top 85%',
+    end: 'top 25%',
+    duration: 0.8,
+    ease: EASING.smoothOut,
+  });
+
+  const whyChooseItems = [
+    'Professional Videography & Photography Production',
+    'Creative Storytelling & Brand-Focused Content',
+    'Strategic Brand Communication & Marketing Solutions',
+    'Digital Marketing & Social Media Campaign Management',
+    'TV Commercials, Documentaries & Corporate Video Production',
+    'Event Coverage & Professional Media Production',
+    'Content Strategy Designed to Drive Visibility and Engagement',
+    'Experienced Creative, Marketing & Technical Team',
+    'End-to-End Project Execution with Excellence',
+    'Results-Driven Approach Focused on Brand Growth and Impact',
+  ];
+
   return (
     <section id="about" className="py-32 bg-dark relative overflow-hidden">
       <div className="absolute inset-0 opacity-5">
@@ -70,6 +90,20 @@ export default function AboutSection() {
             driven storytelling, we strive to create content that not only elevates brands but also delivers
             meaningful impact to businesses, communities, and society.
           </p>
+        </div>
+
+        <div className="mt-20" ref={whyChooseRef}>
+          <h3 className="text-3xl sm:text-4xl font-bold text-white mb-10 text-center">
+            Why Choose Luminoso Media?
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            {whyChooseItems.map((item, index) => (
+              <div key={index} className="flex items-start gap-3">
+                <span className="text-primary-orange text-xl mt-0.5 flex-shrink-0">&#10003;</span>
+                <span className="text-lg text-light/80">{item}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
