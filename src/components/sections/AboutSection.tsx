@@ -1,14 +1,10 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { useStaggerAnimation, useScrollAnimation } from '@/hooks/useGsapAnimation';
+import { useScrollAnimation } from '@/hooks/useGsapAnimation';
 
-const EASING = { smoothOut: 'Power2.easeOut', smooth: 'Power2.easeInOut' };
-const STAGGER_SETTINGS = { default: 0.15, relaxed: 0.25 };
+const EASING = { smoothOut: 'Power2.easeOut' };
 const SCROLL_TRIGGERS = {
   default: { start: 'top 80%', end: 'top 20%' },
-  relaxed: { start: 'top 90%', end: 'top 30%' },
 };
 
 export default function AboutSection() {
@@ -19,34 +15,12 @@ export default function AboutSection() {
     ease: EASING.smoothOut,
   });
 
-  const cardsContainerRef = useStaggerAnimation('.team-card', {
-    start: SCROLL_TRIGGERS.default.start,
-    end: SCROLL_TRIGGERS.default.end,
+  const contentRef = useScrollAnimation({
+    start: 'top 85%',
+    end: 'top 25%',
     duration: 0.8,
     ease: EASING.smoothOut,
-    stagger: STAGGER_SETTINGS.default,
   });
-
-  const teamMembers = [
-    {
-      name: 'Michael Oladele',
-      role: 'CEO/Creative Director',
-      image: '/Michael Oladele.jpeg',
-      bio: 'Michael is an experienced Creative Producer with 10+ years in content creation, cinematography, drone piloting, and post-production',
-    },
-    {
-      name: 'Marcus Johnson',
-      role: 'Video Producer',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
-      bio: 'Technical maestro bringing cinematic quality to every frame',
-    },
-    {
-      name: 'Daniel Joseph',
-      role: 'IT Specialist',
-      image: '/Daniel Joseph.JPG',
-      bio: 'A digital executive and strategist with a strong background in business communications, operations, product design, networking, and cybersecurity',
-    },
-  ];
 
   return (
     <section id="about" className="py-32 bg-dark relative overflow-hidden">
@@ -54,45 +28,48 @@ export default function AboutSection() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary-orange to-primary-red" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-24" ref={titleRef}>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-16" ref={titleRef}>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Meet the Team
+            About Luminoso Media
           </h2>
-          <p className="text-lg text-light/70 max-w-2xl mx-auto">
-            A collective of creative minds dedicated to delivering exceptional
-            results and transforming visions into reality
-          </p>
+          <div className="w-24 h-1 bg-primary-orange mx-auto" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12" ref={cardsContainerRef}>
-          {teamMembers.map((member, index) => (
-            <motion.div key={index} className="team-card">
-              <motion.div
-                className="group cursor-pointer"
-                whileHover={{ y: -10 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="relative h-72 mb-6 overflow-hidden rounded-lg">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  {member.name}
-                </h3>
-                <p className="text-primary-orange font-semibold mb-3">
-                  {member.role}
-                </p>
-                <p className="text-light/60">{member.bio}</p>
-              </motion.div>
-            </motion.div>
-          ))}
+        <div className="space-y-6 text-lg text-light/80 leading-relaxed" ref={contentRef}>
+          <p>
+            Luminoso Media is a leading content production company established in 2010, specializing in
+            videography, photography, creative media production, strategic brand communication, and
+            marketing solutions. With a proven track record of delivering high-quality documentaries, TV
+            commercials, corporate content, event coverage, digital marketing campaigns, and professional
+            training facilitation, we are committed to transforming ideas into compelling visual experiences
+            that leave a lasting impact. Through a results-driven approach focused on brand growth and
+            impact, we help businesses, organizations, and individuals strengthen their visibility, connect
+            with their audiences, and achieve meaningful outcomes through powerful storytelling and
+            innovative media solutions.
+          </p>
+
+          <p>
+            At Luminoso Media, we bring together a highly skilled team of creative strategists, visual
+            storytellers, client service professionals, and production experts who manage every stage of a
+            project, from concept development to final delivery. Our collaborative and detail-driven
+            approach ensures excellence, creativity, and precision in every production.
+          </p>
+
+          <p>
+            We are a fully registered and legally recognized company under the Nigerian Corporate Affairs
+            Commission (CAC), authorized to operate within Nigeria and internationally. Our reputation is
+            built on professionalism, innovation, and an unwavering commitment to delivering results that
+            exceed client expectations.
+          </p>
+
+          <p>
+            Our vision is to become one of the most respected and influential media production companies
+            within our areas of expertise. We believe exceptional results are achieved through teamwork,
+            creativity, strategic planning, and technical excellence. By combining innovation with purpose-
+            driven storytelling, we strive to create content that not only elevates brands but also delivers
+            meaningful impact to businesses, communities, and society.
+          </p>
         </div>
       </div>
     </section>
