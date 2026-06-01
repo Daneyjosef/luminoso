@@ -62,8 +62,10 @@ export default function ContactSection() {
     {
       icon: FiMail,
       label: 'Email',
-      value: 'info@theluminosomedia.com',
-      href: 'mailto:info@theluminosomedia.com',
+      value: 'daniel@theluminosomedia.com',
+      value2: 'moladele@luminosomedia.com',
+      href: 'mailto:daniel@theluminosomedia.com',
+      href2: 'mailto:moladele@luminosomedia.com',
     },
     {
       icon: FiPhone,
@@ -74,7 +76,7 @@ export default function ContactSection() {
     {
       icon: FiMapPin,
       label: 'Location',
-      value: 'Toronto, Canada',
+      value: 'Nigeria: 9 Afolabi Aina street, Ikeja Lagos',
       href: '#',
     },
   ];
@@ -103,10 +105,9 @@ export default function ContactSection() {
             {contactInfo.map((info, index) => {
               const Icon = info.icon;
               return (
-                <motion.a
+                <div
                   key={index}
-                  href={info.href}
-                  className="contact-info-item flex items-start gap-6 group cursor-pointer"
+                  className="contact-info-item flex items-start gap-6 group"
                 >
                   <motion.div
                     className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-br from-primary-orange to-primary-red flex items-center justify-center"
@@ -118,11 +119,31 @@ export default function ContactSection() {
                     <p className="text-light/60 text-sm font-semibold mb-1">
                       {info.label}
                     </p>
-                    <p className="text-white font-medium group-hover:text-primary-orange transition-colors duration-300">
-                      {info.value}
-                    </p>
+                    {'value2' in info && info.value2 ? (
+                      <div className="space-y-1">
+                        <a
+                          href={info.href}
+                          className="text-white font-medium hover:text-primary-orange transition-colors duration-300 block"
+                        >
+                          {info.value}
+                        </a>
+                        <a
+                          href={info.href2 || '#'}
+                          className="text-white font-medium hover:text-primary-orange transition-colors duration-300 block"
+                        >
+                          {info.value2}
+                        </a>
+                      </div>
+                    ) : (
+                      <a
+                        href={info.href}
+                        className="text-white font-medium hover:text-primary-orange transition-colors duration-300"
+                      >
+                        {info.value}
+                      </a>
+                    )}
                   </div>
-                </motion.a>
+                </div>
               );
             })}
           </div>
