@@ -119,9 +119,9 @@ export default function HeroSection() {
             className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
             ref={heroHeadingRef}
           >
-            We Tell Stories{' '}
+            From Ideas We Sow to Brands{' '}
             <span className="bg-gradient-to-r from-primary-orange via-primary-red to-primary-orange bg-clip-text text-transparent">
-              That Move Brands
+              That Steal the Show
             </span>
           </h1>
 
