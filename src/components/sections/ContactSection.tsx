@@ -62,10 +62,8 @@ export default function ContactSection() {
     {
       icon: FiMail,
       label: 'Email',
-      value: 'daniel@theluminosomedia.com',
-      value2: 'info@theluminosomedia.com',
-      href: 'mailto:daniel@theluminosomedia.com',
-      href2: 'mailto:info@theluminosomedia.com',
+      value: 'info@theluminosomedia.com',
+      href: 'mailto:info@theluminosomedia.com',
     },
     {
       icon: FiPhone,
@@ -119,29 +117,12 @@ export default function ContactSection() {
                     <p className="text-light/60 text-sm font-semibold mb-1">
                       {info.label}
                     </p>
-                    {'value2' in info && info.value2 ? (
-                      <div className="space-y-1">
-                        <a
-                          href={info.href}
-                          className="text-white font-medium hover:text-primary-orange transition-colors duration-300 block"
-                        >
-                          {info.value}
-                        </a>
-                        <a
-                          href={info.href2 || '#'}
-                          className="text-white font-medium hover:text-primary-orange transition-colors duration-300 block"
-                        >
-                          {info.value2}
-                        </a>
-                      </div>
-                    ) : (
-                      <a
-                        href={info.href}
-                        className="text-white font-medium hover:text-primary-orange transition-colors duration-300"
-                      >
-                        {info.value}
-                      </a>
-                    )}
+                    <a
+                      href={info.href}
+                      className="text-white font-medium hover:text-primary-orange transition-colors duration-300"
+                    >
+                      {info.value}
+                    </a>
                   </div>
                 </div>
               );
