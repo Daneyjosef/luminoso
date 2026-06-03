@@ -40,37 +40,37 @@ export default function PortfolioPreviewSection() {
       id: 1,
       title: 'Urban Exploration',
       category: 'Video',
-      image: 'https://images.unsplash.com/photo-1611339555312-e607c04352fa?w=600&h=600&fit=crop',
+      image: '/new image.jpg',
     },
     {
       id: 2,
       title: 'Brand Identity',
       category: 'Photography',
-      image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=600&h=600&fit=crop',
+      image: '/new image 4.jpg',
     },
     {
       id: 3,
       title: 'Commercial Spot',
       category: 'Video',
-      image: 'https://images.unsplash.com/photo-1574607746814-792c40ef7b11?w=600&h=600&fit=crop',
+      image: '/new image 5.jpg',
     },
     {
       id: 4,
       title: 'Product Showcase',
       category: 'Photography',
-      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=600&fit=crop',
+      image: '/new image 7.jpg',
     },
     {
       id: 5,
       title: 'Lifestyle Content',
       category: 'Video',
-      image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=600&fit=crop',
+      image: '/new image 8.jpg',
     },
     {
       id: 6,
       title: 'Corporate Event',
       category: 'Photography',
-      image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=600&fit=crop',
+      image: '/new image 9.jpg',
     },
   ];
 
