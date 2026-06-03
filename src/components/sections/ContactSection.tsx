@@ -63,9 +63,9 @@ export default function ContactSection() {
       icon: FiMail,
       label: 'Email',
       value: 'daniel@theluminosomedia.com',
-      value2: 'moladele@luminosomedia.com',
+      value2: 'info@theluminosomedia.com',
       href: 'mailto:daniel@theluminosomedia.com',
-      href2: 'mailto:moladele@luminosomedia.com',
+      href2: 'mailto:info@theluminosomedia.com',
     },
     {
       icon: FiPhone,
