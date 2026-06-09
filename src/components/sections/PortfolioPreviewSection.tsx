@@ -89,9 +89,10 @@ export default function PortfolioPreviewSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16" ref={portfolioContainerRef}>
           {portfolioItems.map((item) => (
-            <motion.div
+            <Link
+              href="/portfolio"
               key={item.id}
-              className="portfolio-item group cursor-pointer"
+              className="portfolio-item group cursor-pointer block"
             >
               <motion.div
                 className="relative h-80 overflow-hidden rounded-lg"
@@ -141,7 +142,7 @@ export default function PortfolioPreviewSection() {
                   </motion.div>
                 )}
               </motion.div>
-            </motion.div>
+            </Link>
           ))}
         </div>
 
