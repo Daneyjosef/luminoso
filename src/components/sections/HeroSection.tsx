@@ -12,8 +12,9 @@ const EASING = {
 };
 
 const VIDEOS = [
-  '/Abuja skyline.mp4',
-  '/Lagos skyline.mp4',
+  '/DOUBLE FRAME FANAL.mp4',
+  '/HOME PAGE Video.mp4',
+  '/LIFE STYLE 1 FINAL.mp4',
 ];
 
 const INTERVAL_MS = 8000;
