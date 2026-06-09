@@ -11,6 +11,44 @@ const FRAMER_EASING = { smoothOut: 'easeOut', smooth: 'easeInOut' };
 const STAGGER_SETTINGS = { tight: 0.08, default: 0.15 };
 const SCROLL_TRIGGERS = { default: { start: 'top 80%', end: 'top 20%' } };
 
+interface PortfolioItem {
+  id: number;
+  title: string;
+  category: 'video' | 'photography';
+  image?: string;
+  youtubeId?: string;
+  description: string;
+}
+
+function getYouTubeThumbnail(youtubeId: string): string {
+  return `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`;
+}
+
+function YouTubeThumbnail({ youtubeId, title }: { youtubeId: string; title: string }) {
+  return (
+    <Image
+      src={getYouTubeThumbnail(youtubeId)}
+      alt={title}
+      fill
+      className="object-cover group-hover:scale-110 transition-transform duration-500"
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      unoptimized
+    />
+  );
+}
+
+function YouTubeEmbed({ youtubeId, title }: { youtubeId: string; title: string }) {
+  return (
+    <iframe
+      src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`}
+      title={title}
+      className="w-full h-full"
+      allow="autoplay; encrypted-media"
+      allowFullScreen
+    />
+  );
+}
+
 export default function PortfolioPage() {
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
@@ -30,62 +68,62 @@ export default function PortfolioPage() {
     stagger: STAGGER_SETTINGS.tight,
   });
 
-  const portfolioItems = [
+  const portfolioItems: PortfolioItem[] = [
     {
       id: 1,
-      title: 'Urban Exploration',
-      category: 'video',
-      image: '/new image.jpg',
-      description: 'A cinematic journey through urban landscapes',
-    },
-    {
-      id: 2,
       title: 'Brand Identity',
       category: 'photography',
       image: '/new image 4.jpg',
       description: 'Corporate branding and identity work',
     },
     {
-      id: 3,
-      title: 'Commercial Spot',
-      category: 'video',
-      image: '/new image 5.jpg',
-      description: '30-second commercial for premium brand',
-    },
-    {
-      id: 4,
+      id: 2,
       title: 'Product Showcase',
       category: 'photography',
       image: '/new image 7.jpg',
       description: 'High-end product photography',
     },
     {
-      id: 5,
-      title: 'Lifestyle Content',
-      category: 'video',
-      image: '/new image 8.jpg',
-      description: 'Modern lifestyle brand video',
-    },
-    {
-      id: 6,
+      id: 3,
       title: 'Corporate Event',
       category: 'photography',
       image: '/new image 9.jpg',
       description: 'Annual conference documentation',
     },
     {
-      id: 7,
-      title: 'Fashion Campaign',
+      id: 4,
+      title: 'YouTube Video 1',
       category: 'video',
-      image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop',
-      description: 'Fashion brand campaign video',
+      youtubeId: 'zt5C1EJTPZ8',
+      description: 'Premium video production — cinematic storytelling',
+    },
+    {
+      id: 5,
+      title: 'YouTube Video 2',
+      category: 'video',
+      youtubeId: 'kBIzeqIH4Xs',
+      description: 'Creative content marketing campaign',
+    },
+    {
+      id: 6,
+      title: 'YouTube Video 3',
+      category: 'video',
+      youtubeId: 'Ea_W2yNut_Q',
+      description: 'Brand film — from concept to screen',
+    },
+    {
+      id: 7,
+      title: 'YouTube Video 4',
+      category: 'video',
+      youtubeId: 'Patf_Lpm0yM',
+      description: 'Commercial spot — high impact visuals',
     },
     {
       id: 8,
-      title: 'Tech Product Launch',
-      category: 'photography',
-      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&h=600&fit=crop',
-      description: 'Technology product launch event',
+      title: 'YouTube Video 5',
+      category: 'video',
+      youtubeId: 'sI3phctUw4I',
+      description: 'Documentary-style brand storytelling',
     },
   ];
 
@@ -173,13 +211,17 @@ export default function PortfolioPage() {
                   whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.3, ease: FRAMER_EASING.smooth }}
                 >
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
+                  {item.youtubeId ? (
+                    <YouTubeThumbnail youtubeId={item.youtubeId} title={item.title} />
+                  ) : (
+                    <Image
+                      src={item.image || ''}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  )}
 
                   {/* Overlay */}
                   <motion.div
@@ -271,38 +313,40 @@ export default function PortfolioPage() {
                 </button>
 
                 <motion.div className="rounded-xl overflow-hidden">
-                  {portfolioItems.find((item) => item.id === selectedItem) && (
-                    <>
-                      <div className="relative w-full h-[60vh]">
-                        <Image
-                          src={
-                            portfolioItems.find((item) => item.id === selectedItem)
-                              ?.image || ''
-                          }
-                          alt="Portfolio item"
-                          fill
-                          className="object-contain"
-                          sizes="100vw"
-                        />
-                      </div>
-                      <div className="p-6 bg-dark/50 backdrop-blur-md">
-                        <h2 className="text-3xl font-bold text-white mb-2">
-                          {
-                            portfolioItems.find(
-                              (item) => item.id === selectedItem
-                            )?.title
-                          }
-                        </h2>
-                        <p className="text-light/70">
-                          {
-                            portfolioItems.find(
-                              (item) => item.id === selectedItem
-                            )?.description
-                          }
-                        </p>
-                      </div>
-                    </>
-                  )}
+                  {(() => {
+                    const current = portfolioItems.find(
+                      (item) => item.id === selectedItem
+                    );
+                    if (!current) return null;
+                    return (
+                      <>
+                        <div className="relative w-full h-[60vh] bg-black">
+                          {current.youtubeId ? (
+                            <YouTubeEmbed
+                              youtubeId={current.youtubeId}
+                              title={current.title}
+                            />
+                          ) : (
+                            <Image
+                              src={current.image || ''}
+                              alt={current.title}
+                              fill
+                              className="object-contain"
+                              sizes="100vw"
+                            />
+                          )}
+                        </div>
+                        <div className="p-6 bg-dark/50 backdrop-blur-md">
+                          <h2 className="text-3xl font-bold text-white mb-2">
+                            {current.title}
+                          </h2>
+                          <p className="text-light/70">
+                            {current.description}
+                          </p>
+                        </div>
+                      </>
+                    );
+                  })()}
                 </motion.div>
               </motion.div>
             </motion.div>
